@@ -1,0 +1,12 @@
+C:\Users\rocky computer\Desktop\dbmslab4\dbmslab4\bin\Debug\dbmslab4.exe.config
+C:\Users\rocky computer\Desktop\dbmslab4\dbmslab4\bin\Debug\dbmslab4.exe
+C:\Users\rocky computer\Desktop\dbmslab4\dbmslab4\bin\Debug\dbmslab4.pdb
+C:\Users\rocky computer\Desktop\dbmslab4\dbmslab4\obj\Debug\dbmslab4.csprojResolveAssemblyReference.cache
+C:\Users\rocky computer\Desktop\dbmslab4\dbmslab4\obj\Debug\dbmslab4.Form1.resources
+C:\Users\rocky computer\Desktop\dbmslab4\dbmslab4\obj\Debug\dbmslab4.Properties.Resources.resources
+C:\Users\rocky computer\Desktop\dbmslab4\dbmslab4\obj\Debug\dbmslab4.csproj.GenerateResource.Cache
+C:\Users\rocky computer\Desktop\dbmslab4\dbmslab4\obj\Debug\dbmslab4.exe
+C:\Users\rocky computer\Desktop\dbmslab4\dbmslab4\obj\Debug\dbmslab4.pdb
+C:\Users\rocky computer\Desktop\cloproject\dbmslab4\dbmslab4\bin\Debug\dbmslab4.exe.config
+C:\Users\rocky computer\Desktop\cloproject\dbmslab4\dbmslab4\obj\Debug\dbmslab4.exe
+C:\Users\rocky computer\Desktop\cloproject\dbmslab4\dbmslab4\obj\Debug\dbmslab4.pdb
