@@ -17,3 +17,13 @@ E:\umayya\smester6\Semester 6\dbms\lab\2016-CS-154_7220\CLO\CLO\obj\Debug\CLO.cs
 E:\umayya\smester6\Semester 6\dbms\lab\2016-CS-154_7220\CLO\CLO\obj\Debug\CLO.exe
 E:\umayya\smester6\Semester 6\dbms\lab\2016-CS-154_7220\CLO\CLO\obj\Debug\CLO.pdb
 E:\umayya\smester6\Semester 6\dbms\lab\2016-CS-154_7220\CLO\CLO\obj\Debug\CLO.fmCLO.resources
+C:\Users\NUMAIR BRO\Desktop\cloproject\CLO\CLO\obj\Debug\CLO.fmCLO.resources
+C:\Users\NUMAIR BRO\Desktop\cloproject\CLO\CLO\obj\Debug\CLO.Properties.Resources.resources
+C:\Users\NUMAIR BRO\Desktop\cloproject\CLO\CLO\obj\Debug\CLO.csproj.GenerateResource.cache
+C:\Users\NUMAIR BRO\Desktop\cloproject\CLO\CLO\obj\Debug\CLO.csproj.CoreCompileInputs.cache
+C:\Users\NUMAIR BRO\Desktop\cloproject\CLO\CLO\obj\Debug\CLO.exe
+C:\Users\NUMAIR BRO\Desktop\cloproject\CLO\CLO\obj\Debug\CLO.pdb
+C:\Users\NUMAIR BRO\Desktop\cloproject\CLO\CLO\bin\Debug\CLO.exe.config
+C:\Users\NUMAIR BRO\Desktop\cloproject\CLO\CLO\bin\Debug\CLO.exe
+C:\Users\NUMAIR BRO\Desktop\cloproject\CLO\CLO\bin\Debug\CLO.pdb
+C:\Users\NUMAIR BRO\Desktop\cloproject\CLO\CLO\obj\Debug\CLO.csprojAssemblyReference.cache

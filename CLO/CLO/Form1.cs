@@ -96,9 +96,17 @@ namespace CLO
         private void btnstdadd_Click(object sender, EventArgs e)
         {
             con.Open();
-            Functions function = new Functions();
-            int status_ = function.status_in_id(cmbstdstatus.Text);
-            string query = @"INSERT INTO Student ( FirstName, LastName , Contact , Email , RegistrationNumber ,Status) VALUES ('" + txtstdfirstname.Text + "', '" + txtstdlastname.Text + "', '" + txtstdcontact.Text + "', '" + txtstdemail.Text + "', '" + txtstdregistrationNo.Text + "', '" + status_ + "'); ";
+            int status;
+            if(cmbstdstatus.Text == "Active")
+            {
+                 status = 5;
+            }
+            else
+            {
+                 status = 6;
+            }
+            
+            string query = @"INSERT INTO Student ( FirstName, LastName , Contact , Email , RegistrationNumber ,Status) VALUES ('" + txtstdfirstname.Text + "', '" + txtstdlastname.Text + "', '" + txtstdcontact.Text + "', '" + txtstdemail.Text + "', '" + txtstdregistrationNo.Text + "', '" + status + "'); ";
             SqlCommand cmd = new SqlCommand(query, con);
             int rows = cmd.ExecuteNonQuery();
             if (rows > 0)
@@ -117,7 +125,9 @@ namespace CLO
         
     private void Form1_Load(object sender, EventArgs e)
         {
-           
+            // TODO: This line of code loads data into the 'projectBDataSet1.Clo' table. You can move, or remove it, as needed.
+            this.cloTableAdapter.Fill(this.projectBDataSet1.Clo);
+
             GVStudent.DataSource = ShowDataInGridView("SELECT * FROM Student;");
             lblRecord.Text = "Student Records";
             //GVStudent.Columns[0].Visible = false;
@@ -125,40 +135,32 @@ namespace CLO
             //addbutton_gridview("Dalete", GVStudent);
             //db.CloseConnection();
         }
-       
-        
-
         private void GVStudent_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(lblRecord == "")
-            {
-
-            }
-            /*
-            Functions student = new Functions();
-            //int rows = GVStudent.Rows.Count;
-            
-            int selectedRow = GVStudent.CurrentCell.RowIndex;
-            int cell = GVStudent.CurrentCell.ColumnIndex;
-            int id = (int)(GVStudent.Rows[selectedRow].Cells[0].Value);
-            string value = GVStudent.Rows[selectedRow].Cells[cell].Value.ToString();
-            MessageBox.Show(value);
-             if (GVStudent.CurrentRow.HeaderCell.Value.ToString() == "Delete")
-            {
-                int r = student.deletestd(id);
-                MessageBox.Show(r.ToString());
-                GVStudent.Rows.RemoveAt(selectedRow);
-            }
-            //}else
-             if (value == "Update")
-            {
-
-            }*/
+            int r = e.RowIndex;
+            txtstdfirstname.Text = GVStudent.Rows[r].Cells[1].Value.ToString();
+            txtstdlastname.Text = GVStudent.Rows[r].Cells[2].Value.ToString();
+            txtstdcontact.Text = GVStudent.Rows[r].Cells[3].Value.ToString();
+            txtstdemail.Text = GVStudent.Rows[r].Cells[4].Value.ToString();
+            txtstdregistrationNo.Text = GVStudent.Rows[r].Cells[5].Value.ToString();
+            if (GVStudent.Rows[r].Cells[6].Value.ToString() == "5")
+                cmbstdstatus.Text = "Active";
+            else
+                cmbstdstatus.Text = "Inactive";
         }
 
         private void GVStudent_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            int r = e.RowIndex;
+            txtstdfirstname.Text = GVStudent.Rows[r].Cells[1].Value.ToString();
+            txtstdlastname.Text = GVStudent.Rows[r].Cells[2].Value.ToString();
+            txtstdcontact.Text = GVStudent.Rows[r].Cells[3].Value.ToString();
+            txtstdemail.Text = GVStudent.Rows[r].Cells[4].Value.ToString();
+            txtstdregistrationNo.Text = GVStudent.Rows[r].Cells[5].Value.ToString();
+            if (GVStudent.Rows[r].Cells[6].Value.ToString() == "5")
+                cmbstdstatus.Text = "Active";
+            else
+                cmbstdstatus.Text = "Inactive";
         }
 
        
@@ -206,8 +208,103 @@ namespace CLO
 
         private void tabStudentAttendance_Click(object sender, EventArgs e)
         {
-            GVStudent.DataSource = ShowDataInGridView("Select Student.RegistrationNumber, Student.FirstName,StudentAttendance.StudentId, StudentAttendance.AttendanceStatus from Student inner join StudentAttendance on Student.Id=StudentAttendance.StudentId;"");
+            GVStudent.DataSource = ShowDataInGridView("Select Student.RegistrationNumber, Student.FirstName,StudentAttendance.StudentId, StudentAttendance.AttendanceStatus from Student inner join StudentAttendance on Student.Id=StudentAttendance.StudentId;");
             lblRecord.Text = "StudentAtttendance Records";
         }
+
+        private void btnstudentEdit_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            int status;
+            if (cmbstdstatus.Text == "Active")
+            {
+                status = 5;
+            }
+            else
+            {
+                status = 6;
+            }
+
+            string query = @"Update  Student SET  FirstName = '" + txtstdfirstname.Text + "',  LastName  = '" + txtstdlastname.Text + "', Contact = '" + txtstdcontact.Text + "', Email  = '" + txtstdemail.Text +"' ,RegistrationNumber='"
+                + txtstdregistrationNo.Text+"',Status ='" +status+  "'); ";
+            SqlCommand cmd = new SqlCommand(query, con);
+            int rows = cmd.ExecuteNonQuery();
+            if (rows > 0)
+            {
+                GVStudent.DataSource = ShowDataInGridView("SELECT * FROM Student;");
+                lblRecord.Text = "Student Records";
+                MessageBox.Show("Student data is successfully save");
+            }
+            else
+            {
+                MessageBox.Show("somthing wrong");
+            }
+            con.Close();
+
+        }
+
+        private void btnCLOcadd_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            string query = @"INSERT INTO Clo  ( Name , DateCreated , DateUpdated ) VALUES ('" + txtcloname.Text + "', '" + DateTime.Now + "', '" + DateTime.Now +  "'); ";
+            SqlCommand cmd = new SqlCommand(query, con);
+            int rows = cmd.ExecuteNonQuery();
+            if (rows > 0)
+            {
+                GVStudent.DataSource = ShowDataInGridView("SELECT * FROM Clo;");
+                lblRecord.Text = "Clo Records";
+                MessageBox.Show("Clo data is successfully save");
+            }
+            else
+            {
+                MessageBox.Show("somthing wrong");
+            }
+            con.Close();
+        }
+
+        private void btnRubricadd_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            string query = @"INSERT INTO Rubric ( Detail, Cloid) VALUES ('" + txtrubricDetails.Text + "', (SELECT id from Clo where Name ='" + cmbselectClo.Text + "')); ";
+            SqlCommand cmd = new SqlCommand(query, con);
+            int rows = cmd.ExecuteNonQuery();
+            if (rows > 0)
+            {
+                GVStudent.DataSource = ShowDataInGridView("SELECT * FROM Rubric;");
+                lblRecord.Text = "Rubric Records";
+                MessageBox.Show("Rubric data is successfully save");
+            }
+            else
+            {
+                MessageBox.Show("somthing wrong");
+            }
+            con.Close();
+        }
+
+        private void btnRubricEdit_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnStudentDelete_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
+
+  /*  private void GVStudent_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int r = e.RowIndex;
+            txtstdfirstname.Text = GVStudent.Rows[r].Cells[1].Value.ToString();
+            txtstdlastname.Text = GVStudent.Rows[r].Cells[2].Value.ToString();
+            txtstdcontact.Text = GVStudent.Rows[r].Cells[3].Value.ToString();
+            txtstdemail.Text = GVStudent.Rows[r].Cells[4].Value.ToString();
+            txtstdregistrationNo.Text = GVStudent.Rows[r].Cells[5].Value.ToString();
+            if (GVStudent.Rows[r].Cells[6].Value.ToString() == "5")
+                cmbstdstatus.Text = "Active";
+            else
+                cmbstdstatus.Text = "Inactive";
+        }
+        */
 }
+

@@ -16,7 +16,7 @@ namespace CLO
     {
         public bool charonly(string str)
         {
-            return Regex.IsMatch(str, @"^([a-zA-Z ]*?)$"))
+            return Regex.IsMatch(str, @"^([a-zA-Z ]*?)$");
         }
         public bool numberonly(string str)
         {
@@ -39,74 +39,6 @@ namespace CLO
         {
             return Regex.IsMatch(str, @"^[a - zA - Z0 - 9] + $");
         }
-        /*
-        public string status_Name(int status)"^[0-9]+$"@"^[a-zA-Z0-9_]+$
-        {
-            Database database = new Database();
-            string status_ = "";
-            string query = @"SELECT LookupId FROM Lookup WHERE Name = '" + status + "';";
-            SqlDataReader reader = database.DataReader(query);
-            while (reader.Read())   // This is how record is read. Loop through the each record
-            {
-                status_ = reader["LookupId"].ToString();
-            }
-            return status_;
-        }
-        public int status_in_id(string status)
-        {
-            Database database = new Database();
-            string query = @"SELECT LookupId FROM Lookup WHERE Name = '" + status + "';";
-            int status_ = database.DataReaderid(query);
-            return status_;
-        }
-
-
-        public int addStudent(string firstname, string lastname, string contact, string email, string registration_no, string status)
-        {
-
-            try
-            {
-                //string ConnectionString = @"Data Source=NUMAIR;Initial Catalog=ProjectB;Integrated Security=True";
-                Database database = new Database();
-                lookup lookupclass = new lookup();
-                //db.setConection_string(ConnectionString);
-                int status_ = lookupclass.status_in_id(status);
-                string query = @"INSERT INTO Student ( FirstName, LastName , Contact , Email , RegistrationNumber ,Status) VALUES ('" + firstname + "', '" + lastname + "', '" + contact + "', '" + email + "', '" + registration_no + "', '" + status_ + "'); ";
-                int rows = database.ExecuteQueries(query);
-                return rows;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return -1;
-            }
-            finally
-            {
-              //  db.CloseConnection();
-            }
-        }
-        public int deletestd(int id)
-        {
-            try
-            {
-                Database database = new Database();
-                //string ConnectionString = @"Data Source=NUMAIR;Initial Catalog=ProjectB;Integrated Security=True";
-                //database.setConection_string(ConnectionString);
-                string query = "DELETE FROM student WHERE Id = " + id + ";";
-                int rows = database.ExecuteQueries(query);
-                return rows;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return -1;
-            }
-            finally
-            {
-               // db.CloseConnection();
-            }
-
-        }*/
+       
     }
 }

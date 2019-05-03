@@ -1,4 +1,7 @@
-﻿namespace CLO
+﻿using System;
+using System.Windows.Forms;
+
+namespace CLO
 {
     partial class fmCLO
     {
@@ -54,6 +57,8 @@
             this.lblcloname = new System.Windows.Forms.Label();
             this.tabRubric = new System.Windows.Forms.TabPage();
             this.cmbselectClo = new System.Windows.Forms.ComboBox();
+            this.cloBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.projectBDataSet1 = new CLO.ProjectBDataSet1();
             this.btnRubricDelete = new System.Windows.Forms.Button();
             this.btnRubricEdit = new System.Windows.Forms.Button();
             this.btnRubricadd = new System.Windows.Forms.Button();
@@ -104,10 +109,13 @@
             this.lookupBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lookupTableAdapter = new CLO.ProjectBDataSetTableAdapters.LookupTableAdapter();
             this.lblRecord = new System.Windows.Forms.Label();
+            this.cloTableAdapter = new CLO.ProjectBDataSet1TableAdapters.CloTableAdapter();
             this.tabCTRLCLO.SuspendLayout();
             this.tabStudent.SuspendLayout();
             this.tabclo.SuspendLayout();
             this.tabRubric.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cloBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet1)).BeginInit();
             this.tabRubriclevel.SuspendLayout();
             this.tabAssessmentComponent.SuspendLayout();
             this.tabassessment.SuspendLayout();
@@ -130,7 +138,7 @@
             this.tabCTRLCLO.Location = new System.Drawing.Point(12, 12);
             this.tabCTRLCLO.Name = "tabCTRLCLO";
             this.tabCTRLCLO.SelectedIndex = 0;
-            this.tabCTRLCLO.Size = new System.Drawing.Size(425, 319);
+            this.tabCTRLCLO.Size = new System.Drawing.Size(464, 319);
             this.tabCTRLCLO.TabIndex = 0;
             // 
             // tabStudent
@@ -153,7 +161,7 @@
             this.tabStudent.Location = new System.Drawing.Point(4, 22);
             this.tabStudent.Name = "tabStudent";
             this.tabStudent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStudent.Size = new System.Drawing.Size(417, 293);
+            this.tabStudent.Size = new System.Drawing.Size(456, 293);
             this.tabStudent.TabIndex = 0;
             this.tabStudent.Text = "Student";
             this.tabStudent.UseVisualStyleBackColor = true;
@@ -167,6 +175,7 @@
             this.btnStudentDelete.TabIndex = 31;
             this.btnStudentDelete.Text = "Delete";
             this.btnStudentDelete.UseVisualStyleBackColor = true;
+            this.btnStudentDelete.Click += new System.EventHandler(this.btnStudentDelete_Click);
             // 
             // btnstudentEdit
             // 
@@ -176,6 +185,7 @@
             this.btnstudentEdit.TabIndex = 30;
             this.btnstudentEdit.Text = "Edit";
             this.btnstudentEdit.UseVisualStyleBackColor = true;
+            this.btnstudentEdit.Click += new System.EventHandler(this.btnstudentEdit_Click);
             // 
             // lbstdstatus
             // 
@@ -297,7 +307,7 @@
             this.tabclo.Location = new System.Drawing.Point(4, 22);
             this.tabclo.Name = "tabclo";
             this.tabclo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabclo.Size = new System.Drawing.Size(417, 293);
+            this.tabclo.Size = new System.Drawing.Size(456, 293);
             this.tabclo.TabIndex = 1;
             this.tabclo.Text = "CLO";
             this.tabclo.UseVisualStyleBackColor = true;
@@ -329,6 +339,7 @@
             this.btnCLOcadd.TabIndex = 27;
             this.btnCLOcadd.Text = "Add";
             this.btnCLOcadd.UseVisualStyleBackColor = true;
+            this.btnCLOcadd.Click += new System.EventHandler(this.btnCLOcadd_Click);
             // 
             // txtcloname
             // 
@@ -358,7 +369,7 @@
             this.tabRubric.Location = new System.Drawing.Point(4, 22);
             this.tabRubric.Name = "tabRubric";
             this.tabRubric.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRubric.Size = new System.Drawing.Size(417, 293);
+            this.tabRubric.Size = new System.Drawing.Size(456, 293);
             this.tabRubric.TabIndex = 2;
             this.tabRubric.Text = "Rubric";
             this.tabRubric.UseVisualStyleBackColor = true;
@@ -366,11 +377,22 @@
             // 
             // cmbselectClo
             // 
+            this.cmbselectClo.DataSource = this.cloBindingSource;
             this.cmbselectClo.FormattingEnabled = true;
             this.cmbselectClo.Location = new System.Drawing.Point(195, 56);
             this.cmbselectClo.Name = "cmbselectClo";
             this.cmbselectClo.Size = new System.Drawing.Size(121, 21);
             this.cmbselectClo.TabIndex = 33;
+            // 
+            // cloBindingSource
+            // 
+            this.cloBindingSource.DataMember = "Clo";
+            this.cloBindingSource.DataSource = this.projectBDataSet1;
+            // 
+            // projectBDataSet1
+            // 
+            this.projectBDataSet1.DataSetName = "ProjectBDataSet1";
+            this.projectBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnRubricDelete
             // 
@@ -389,6 +411,7 @@
             this.btnRubricEdit.TabIndex = 31;
             this.btnRubricEdit.Text = "Edit";
             this.btnRubricEdit.UseVisualStyleBackColor = true;
+            this.btnRubricEdit.Click += new System.EventHandler(this.btnRubricEdit_Click);
             // 
             // btnRubricadd
             // 
@@ -398,6 +421,7 @@
             this.btnRubricadd.TabIndex = 30;
             this.btnRubricadd.Text = "Add";
             this.btnRubricadd.UseVisualStyleBackColor = true;
+            this.btnRubricadd.Click += new System.EventHandler(this.btnRubricadd_Click);
             // 
             // txtrubricDetails
             // 
@@ -439,7 +463,7 @@
             this.tabRubriclevel.Location = new System.Drawing.Point(4, 22);
             this.tabRubriclevel.Name = "tabRubriclevel";
             this.tabRubriclevel.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRubriclevel.Size = new System.Drawing.Size(417, 293);
+            this.tabRubriclevel.Size = new System.Drawing.Size(456, 293);
             this.tabRubriclevel.TabIndex = 3;
             this.tabRubriclevel.Text = "Rubric Level";
             this.tabRubriclevel.UseVisualStyleBackColor = true;
@@ -539,7 +563,7 @@
             this.tabAssessmentComponent.Location = new System.Drawing.Point(4, 22);
             this.tabAssessmentComponent.Name = "tabAssessmentComponent";
             this.tabAssessmentComponent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAssessmentComponent.Size = new System.Drawing.Size(417, 293);
+            this.tabAssessmentComponent.Size = new System.Drawing.Size(456, 293);
             this.tabAssessmentComponent.TabIndex = 4;
             this.tabAssessmentComponent.Text = "Assesssment Component";
             this.tabAssessmentComponent.UseVisualStyleBackColor = true;
@@ -652,7 +676,7 @@
             this.tabassessment.Location = new System.Drawing.Point(4, 22);
             this.tabassessment.Name = "tabassessment";
             this.tabassessment.Padding = new System.Windows.Forms.Padding(3);
-            this.tabassessment.Size = new System.Drawing.Size(417, 293);
+            this.tabassessment.Size = new System.Drawing.Size(456, 293);
             this.tabassessment.TabIndex = 5;
             this.tabassessment.Text = "Assessment";
             this.tabassessment.UseVisualStyleBackColor = true;
@@ -743,7 +767,7 @@
             this.tabStudentAttendance.Location = new System.Drawing.Point(4, 22);
             this.tabStudentAttendance.Name = "tabStudentAttendance";
             this.tabStudentAttendance.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStudentAttendance.Size = new System.Drawing.Size(417, 293);
+            this.tabStudentAttendance.Size = new System.Drawing.Size(456, 293);
             this.tabStudentAttendance.TabIndex = 6;
             this.tabStudentAttendance.Text = "Attendance";
             this.tabStudentAttendance.UseVisualStyleBackColor = true;
@@ -796,7 +820,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(417, 293);
+            this.tabPage1.Size = new System.Drawing.Size(456, 293);
             this.tabPage1.TabIndex = 7;
             this.tabPage1.Text = "Student Evaluation";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -804,12 +828,13 @@
             // GVStudent
             // 
             this.GVStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GVStudent.Location = new System.Drawing.Point(574, 57);
+            this.GVStudent.Location = new System.Drawing.Point(514, 57);
             this.GVStudent.Name = "GVStudent";
-            this.GVStudent.Size = new System.Drawing.Size(513, 254);
+            this.GVStudent.Size = new System.Drawing.Size(543, 254);
             this.GVStudent.TabIndex = 1;
             this.GVStudent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GVStudent_CellClick);
             this.GVStudent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GVStudent_CellContentClick);
+            this.GVStudent.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GVStudent_CellMouseClick);
             // 
             // projectBDataSet
             // 
@@ -835,6 +860,10 @@
             this.lblRecord.Text = "Records";
             this.lblRecord.Click += new System.EventHandler(this.label2_Click);
             // 
+            // cloTableAdapter
+            // 
+            this.cloTableAdapter.ClearBeforeFill = true;
+            // 
             // fmCLO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -853,6 +882,8 @@
             this.tabclo.PerformLayout();
             this.tabRubric.ResumeLayout(false);
             this.tabRubric.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cloBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectBDataSet1)).EndInit();
             this.tabRubriclevel.ResumeLayout(false);
             this.tabRubriclevel.PerformLayout();
             this.tabAssessmentComponent.ResumeLayout(false);
@@ -866,6 +897,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookupBindingSource)).EndInit();
             this.ResumeLayout(false);
 
+        }
+
+        private void GVStudent_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //throw new NotImplementedException();
         }
 
         #endregion
@@ -945,6 +981,9 @@
         private System.Windows.Forms.Button btnStudentDelete;
         private System.Windows.Forms.Button btnstudentEdit;
         private System.Windows.Forms.Button btnAttendanceMark;
+        private ProjectBDataSet1 projectBDataSet1;
+        private BindingSource cloBindingSource;
+        private ProjectBDataSet1TableAdapters.CloTableAdapter cloTableAdapter;
     }
 }
 
